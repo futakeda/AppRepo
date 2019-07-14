@@ -1,0 +1,94 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="~/Script/jquery-2.1.1.min.js"></script>
+    @*<script type="text/javascript" src="~/scripts/WebApp.js"></script>*@
+    <link rel="stylesheet" href="~/Css/WebAppStyle.css">
+    <title>KITリスト一覧</title>
+</head>
+<body>
+    @*----------------------------------------------
+        ヘッダ表示部
+    ----------------------------------------------*@
+    <div class="head_top pos_relative">
+        <table class="tbl_head">
+            <thead>
+                <tr>
+                    <th>開始日</th>
+                    <th>時間帯</th>
+                    <th>OP</th>
+                    <th>MO</th>
+                    <th>ワークセンタ</th>
+                    <th>工程</th>
+                    <th>作業者</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2019/02/15</td>
+                    <td>08:30～09:25</td>
+                    <td>738</td>
+                    <td>MMA071676</td>
+                    <td>DMK-01</td>
+                    <td>P-SHP-M-1H</td>
+                    <td>テストユーザ</td>
+                    @*<td>@Html.DisplayFor(model => model.Name)</td>*@
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="head_sub pos_relative">
+        <input class="pos_absolute pos_top_right" type="button" id="btn_top" value="TOP画面" />
+    </div>
+    <hr class="pos_relative"/>
+    <div class="head_sub pos_relative">
+        配膳リスト
+    </div>
+    <div class="head_sub pos_relative gray">
+        出庫情報
+    </div>
+    <hr class="pos_relative" />
+    <div class="head_top pos_relative">
+        <table class="tbl_body">
+            <thead>
+                <tr>
+                    <th>物流配膳No.</th>
+                    <th>フダ</th>
+                    <th>BF</th>
+                    <th>取り扱い</th>
+                    <th>位置</th>
+                    <th>部品番号</th>
+                    <th>記述・型式</th>
+                    <th>まるめ</th>
+                    <th>見積数量</th>
+                    <th>摘要</th>
+                    <th>欠品</th>
+                    <th>進捗状況</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="scr-y">
+            <table class="tbl_body">
+                <tbody>
+                    @using System.Data
+                    @foreach (DataRow row in Model.Rows)
+                    {
+                        <tr>
+                            @for (int i = 0; i < Model.Columns.Count; i++)
+                            {
+                                <td>@Html.DisplayFor(model => row[i])</td>
+                            }
+                        </tr>}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

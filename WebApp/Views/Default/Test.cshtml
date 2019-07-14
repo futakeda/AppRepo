@@ -1,0 +1,133 @@
+﻿@model WebApp.Models.GetUserInfo
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="~/Script/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="~/Script/WebApp.js"></script>
+    <link rel="stylesheet" href="~/Css/WebAppStyle.css">
+    <title>おためし画面</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>col1</th>
+                <th>col2</th>
+                <th>touch</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td class="touch" id="touch1">1</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td class="touch" id="touch2">2</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td class="touch" id="touch3">3</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td class="touch" id="touch4">4</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td class="touch" id="touch5">5</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td class="touch" id="touch6">6</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td class="touch" id="touch7">7</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td class="touch" id="touch8">8</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td class="touch" id="touch9">9</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td class="touch" id="touch10">10</td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="button" id="btnPrint" value="text">
+    <input type="hidden" id="hdnFrom" value="" />
+    <input type="hidden" id="hdnColor" value="" />
+</body>
+</html>
+<script>
+    $(".touch").mousedown(function () {
+        var idx = 0;
+        var array = ["red", "yellow", "green", "cyan", "pink", "blue", "gold", "yellowgreen"];
+        var fromPos = $("#hdnFrom").text();
+
+        // Color設定判定
+        if ($("#hdnColor").text() != "") {
+            var idx = Number($("#hdnColor").text()) + 1;
+        }
+
+        // Color配列の最大値判定
+        if (array.length < (idx + 1)) {
+            idx = 0;
+        }
+
+        if (fromPos != "") {
+            // To取得
+            toPos = Number($('[id=' + $(this).attr("id") + ']').text());
+            fromPos = Number(fromPos);
+
+            // From-Toの逆転判定
+            if (toPos < fromPos) {
+                var tmp = fromPos;
+                fromPos = toPos;
+                toPos = tmp;
+            }
+
+            // From~Toの範囲でスタイル設定
+            for (var i = (fromPos); i <= toPos ; i++) {
+                $('[id=' + $(".touch").attr("id").substring(0, 5) + i + ']').css("background-color", array[idx]);
+            }
+
+            // 初期化
+            $("#hdnFrom").text("");
+            fromPos = "";
+            toPos = "";
+
+            // Color用Hiddenへ設定
+            $("#hdnColor").text(idx);
+        }
+        else {
+            // From取得
+            fromPos = $('[id=' + $(this).attr("id") + ']').text();
+            // スタイル追加
+            $('[id=' + $(this).attr("id") + ']').css("background-color", array[idx]);
+            // From用Hiddenへ設定
+            $("#hdnFrom").text(fromPos);
+         }
+    });
+</script>

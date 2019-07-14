@@ -1,0 +1,193 @@
+﻿@model WebApp.Models.GetUserInfo
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="~/Script/jquery-2.1.1.min.js"></script>
+    @*<script type="text/javascript" src="~/scripts/WebApp.js"></script>*@
+    <link rel="stylesheet" href="~/Css/WebAppStyle.css">
+    <title>KIT基本作業画面</title>
+</head>
+<body>
+    @*----------------------------------------------
+    ヘッダ表示部
+    ----------------------------------------------*@
+    <div class="head_top pos_relative">
+        <table class="tbl_head">
+            <thead>
+                <tr>
+                    <th>開始日</th>
+                    <th>時間帯</th>
+                    <th>OP</th>
+                    <th>MO</th>
+                    <th>ワークセンタ</th>
+                    <th>工程</th>
+                    <th>作業者</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2019/02/15</td>
+                    <td>08:30～09:25</td>
+                    <td>738</td>
+                    <td>MMA071676</td>
+                    <td>DMK-01</td>
+                    <td>P-SHP-M-1H</td>
+                    <td>@Html.DisplayFor(model => model.Name)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr />
+    <div class="base_style pos_relative">
+        @*----------------------------------------------
+        チェックタイトル
+        ----------------------------------------------*@
+        <div class="col1_5">
+            <table class="tbl_check">
+                <tr>
+                    <td>フダ：</td>
+                </tr>
+                <tr>
+                    <td>BF：</td>
+                </tr>
+                <tr>
+                    <td>位置：</td>
+                </tr>
+                <tr>
+                    <td>荷姿：</td>
+                </tr>
+                <tr>
+                    <td>取扱：</td>
+                </tr>
+                <tr>
+                    <td>見積数量：</td>
+                </tr>
+                <tr>
+                    <td><label id="lbl_buhin">部品番号：</label></td>
+                </tr>
+                <tr>
+                    <td>記述・型式：</td>
+                </tr>
+            </table>
+        </div>
+        @*----------------------------------------------
+        値
+        ----------------------------------------------*@
+        <div class="col1_5">
+            <table class="tbl_check">
+                <tr>
+                    <td>111111</td>
+                </tr>
+                <tr>
+                    <td>111111</td>
+                </tr>
+                <tr>
+                    <td>111111</td>
+                </tr>
+                <tr>
+                    <td>111111</td>
+                </tr>
+                <tr>
+                    <td>111111</td>
+                </tr>
+                <tr>
+                    <td>111111</td>
+                </tr>
+                <tr>
+                    <td>2L10-152775-11</td>
+                </tr>
+                <tr>
+                    <td>>WASHER,ANTI-ROTATION2 D18.8RE</td>
+                </tr>
+            </table>
+        </div>
+
+        @*----------------------------------------------
+        チェック部
+        ----------------------------------------------*@
+        <div class="col1_5">
+            <table class="tbl_check">
+                <tr>
+                    <td><input type="checkbox" id="chk_fuda" /></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="chk_bf" /></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="chk_pos" /></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="chk_nisu" /></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="chk_tori" /></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="chk_suuryo" /></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col1_5">
+            <table class="tbl_check">
+                <tr>
+                    <td>物流配膳No.</td>
+                </tr>
+                <tr>
+                    <td>1/26</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col1_5 pos_relative">
+            <div class="btn_col_top pos_absolute">
+                @*<input type="button" id="btn_ithiran" value="一覧表示" onClick="Default/KitList"/>*@
+                @Html.ActionLink("一覧表示", "KitList")
+            </div>
+            <div class="btn_col_bottom pos_absolute">
+                <input type="button" id="btn_next" value="次へ" disabled="disabled"/>
+                @*@Html.ActionLink("次へ", "KitBase")*@
+            </div>
+        </div>
+    </div>
+    <div class="foo">
+        <hr />
+        @FooHelper.SetFooter(2019, "INSTOK")
+    </div>
+
+    @*----------------------------------------------
+    ★★ここからサンプルだよ
+    ----------------------------------------------*@
+    @*@Html.DropDownListFor(
+      model => model.Title,          // プロパティ
+      (IEnumerable<SelectListItem>)ViewBag.SelectOptions,  // 選択オプション
+      " 選択してください ",          // 空オプション
+      new { @class = "title_list" }  // その他の属性
+    )
+    <div> 
+        @ViewData["Message"]
+    </div>
+    @Html.DisplayFor(model => model.Message)*@
+    @*----------------------------------------------
+    ★★ここまでサンプルだよ
+    ----------------------------------------------*@
+</body>
+</html>
+<script>
+    $("#lbl_buhin").mouseup(function () {
+        clearInterval(timer);
+    }).mousedown(function () {
+        timer = setTimeout(function () {
+            if ($("#btn_next").prop("disabled") == true) {
+                $("#btn_next").prop("disabled", false);
+            }
+            else {
+                $("#btn_next").prop("disabled", true);
+            };
+        }, 2000);
+    });
+</script>
