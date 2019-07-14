@@ -169,6 +169,7 @@ table {
   border-color: red;
   border-width: 2px;
   border: inset;
+  height: 100px;
   width: 400px;
 }
 
@@ -177,7 +178,7 @@ table th {
   border-width: 2px;
   border: inset;
   border-color: black;
-  height: 40px;
+  height: 60px;
   width: 30px;
 }
 
@@ -186,5 +187,6 @@ table td {
   border-width: 2px;
   border: inset;
   border-color: black;
+  height: 50px;
   width: 30px;
 }
