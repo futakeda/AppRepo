@@ -190,3 +190,11 @@ table td {
   height: 50px;
   width: 30px;
 }
+
+.lineRow td {
+    background-color: red;
+    height: 1px;
+}
+
+
+

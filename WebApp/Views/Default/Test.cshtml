@@ -38,6 +38,11 @@
                 <td>222</td>
                 <td class="touch" id="touch3">3</td>
             </tr>
+            <tr class="lineRow" id="lr1">
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
             <tr>
                 <td>111</td>
                 <td>222</td>
@@ -47,6 +52,11 @@
                 <td>111</td>
                 <td>222</td>
                 <td class="touch" id="touch5">5</td>
+            </tr>
+            <tr class="lineRow" id="lr2">
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
                 <td>111</td>
@@ -87,25 +97,25 @@
         var array = ["red", "yellow", "green", "cyan", "pink", "blue", "gold", "yellowgreen"];
         var fromPos = $("#hdnFrom").text();
 
-        if (Number($("#hdnDown").text()) != 1 && !down) {
-            // Color用Hiddenへ設定
-            $("#hdnColor").text(Number($("#hdnColor").text())+1);
-            return true;
-        }
+        //if (Number($("#hdnDown").text()) != 1 && !down) {
+        //    // Color用Hiddenへ設定
+        //    $("#hdnColor").text(Number($("#hdnColor").text())+1);
+        //    return true;
+        //}
 
-        if (Number($("#hdnDown").text()) == 1 && down) {
-            // MouseDown用Hiddenへ設定
-            $("#hdnFrom").text("");
-            $("#hdnDown").text("");
-            // Color用Hiddenへ設定
-            $("#hdnColor").text(Number($("#hdnColor").text())+1);
-            return true;
-        }
+        //if (Number($("#hdnDown").text()) == 1 && down) {
+        //    // MouseDown用Hiddenへ設定
+        //    $("#hdnFrom").text("");
+        //    $("#hdnDown").text("");
+        //    // Color用Hiddenへ設定
+        //    $("#hdnColor").text(Number($("#hdnColor").text())+1);
+        //    return true;
+        //}
 
-        if (Number($("#hdnDown").text()) != 1 && down) {
-            // MouseDown用Hiddenへ設定
-            $("#hdnDown").text(1);
-        }
+        //if (Number($("#hdnDown").text()) != 1 && down) {
+        //    // MouseDown用Hiddenへ設定
+        //    $("#hdnDown").text(1);
+        //}
 
         // Color設定判定
         if ($("#hdnColor").text() != "" && !move){
@@ -157,8 +167,8 @@
         var a = test(this, false, true);
     });
 
-    $(".touch").mousemove(function () {
-        //console.log("mousemove!!");
-        var a = test(this, true, false);
-    });
+    //$(".touch").mousemove(function () {
+    //    //console.log("mousemove!!");
+    //    var a = test(this, true, false);
+    //});
 </script>
